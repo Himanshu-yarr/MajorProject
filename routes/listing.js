@@ -14,6 +14,10 @@ router.route("/")
   .get(wrapAsync(listingController.index))//Index route
   .post(isLoggedIn, upload.single('listing[image][url]'), validateListing, wrapAsync(listingController.createListing));//Create Route  //we used wrapAsync here to handle async errors.
 
+router.get(
+  "/category/:category",
+  wrapAsync(listingController.filterByCategory)
+);
 
 router.get("/new", isLoggedIn, listingController.renderNewForm); //New Route
 

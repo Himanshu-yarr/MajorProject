@@ -102,3 +102,156 @@ body {
 .btns {
   display: flex;
 }
+
+/* MOBILE NAVBAR IMPROVEMENTS */
+
+@media (max-width: 768px) {
+  /* Keep navbar stable */
+  .navbar {
+    position: relative;
+  }
+
+  .container-fluid {
+    position: relative;
+  }
+
+  /* Mobile Brand */
+  .mobile-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #fe424d !important;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+
+  /* Collapse Panel Styling */
+  .navbar-collapse {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 0 0 1rem 1rem;
+    margin-top: 0.5rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Smooth height animation */
+  .collapsing {
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  /* Slide + fade effect */
+  .navbar-collapse.collapse {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  .navbar-collapse.collapse.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Make search vertical */
+  form.d-flex {
+    flex-direction: column;
+  }
+
+  .search-inp {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .search-btn {
+    width: 100%;
+  }
+}
+
+/* ========================= */
+/* FILTERS SECTION */
+/* ========================= */
+
+.filters-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Filters container */
+#filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+/* Individual filter */
+.filter {
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  margin-right: 2rem;
+  margin-top: 2rem;
+  opacity: 0.7;
+}
+
+.filter:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.filter p {
+  font-size: 0.8rem;
+}
+
+/* Tax toggle */
+.tax-toggle {
+  border: 1px solid black;
+  border-radius: 1rem;
+  height: 3.25rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.tax-info {
+  display: none;
+}
+
+/* ========================= */
+/* MOBILE RESPONSIVE */
+/* ========================= */
+
+@media (max-width: 768px) {
+  #filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  #filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter {
+    min-width: 70px;
+    margin-top: 1rem;
+  }
+
+  .tax-toggle {
+    height: auto;
+    padding: 0.7rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+.filter.active {
+  opacity: 1;
+  color: #fe424d;
+}
+
+.filter.active i {
+  color: #fe424d;
+}

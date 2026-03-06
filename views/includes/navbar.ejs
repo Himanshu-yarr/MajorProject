@@ -23,33 +23,54 @@
 </style>
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/listing"><i class="fa-regular fa-compass"></i></a>
+  <div class="container-fluid position-relative">
+
+    <!-- Hamburger (LEFT) -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <!-- Mobile Brand (CENTER - Outside Collapse) -->
+    <a class="navbar-brand mobile-brand d-md-none" href="/listing">
+      Wanderlust
+    </a>
+
+    <!-- Desktop Brand (LEFT side normal position) -->
+    <a class="navbar-brand d-none d-md-block" href="/listing">
+      <i class="fa-regular fa-compass"></i>
+    </a>
+
+    <!-- Collapsible Content -->
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
       <div class="navbar-nav">
-
-        <a class="nav-link" href="/listing">Explore</a>
-
+        <a class="nav-link d-none d-md-block" href="/listing">Explore</a>
       </div>
+
+      <!--Search bar-->
       <div class="navbar-nav ms-auto">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations" />
-          <button class="btn search-btn" type="submit"> <i class="fa-solid fa-magnifying-glass"></i>Search</button>
+        <form class="d-flex" role="search" action="/listing" method="GET">
+          <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations" name="search"
+            value="<%= search || '' %>" />
+          <button class="btn search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>Search
+          </button>
         </form>
       </div>
+
       <div class="navbar-nav ms-auto">
         <a class="nav-link" href="/listing/new">Airbnb your home</a>
+
         <% if(!currUser){ %>
           <a class="nav-link" href="/signup"><b>Sign up</b></a>
           <a class="nav-link" href="/login"><b>Log in</b></a>
           <% } %>
+
             <% if(currUser){ %>
               <a class="nav-link" href="/logout">Log out</a>
               <% } %>
       </div>
+
     </div>
   </div>
 </nav>

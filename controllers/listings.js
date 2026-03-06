@@ -1,8 +1,30 @@
 const Listing = require("../models/listing");
-
 module.exports.index = async (req, res) => {
-  const allListings = await Listing.find({}); //Listing.find({}) - this reads the data form the database that was stored in db form data.js file.
-  res.render("listings/index", { allListings });
+
+  let { search } = req.query;
+
+  let allListings;
+
+  if (search) {
+    allListings = await Listing.find({
+      $or: [
+        { title: { $regex: search, $options: "i" } },
+        { location: { $regex: search, $options: "i" } },
+        { country: { $regex: search, $options: "i" } }
+      ]
+    });
+  } else {
+    allListings = await Listing.find({});
+  }
+
+  res.render("listings/index", { allListings, search });
+};
+
+module.exports.filterByCategory = async (req, res) => {
+  const { category } = req.params;
+  console.log("Category clicked:", category);
+  const filteredListings = await Listing.find({ category });
+  res.render("listings/index.ejs", { allListings: filteredListings });
 };
 
 module.exports.renderNewForm = (req, res) => {
