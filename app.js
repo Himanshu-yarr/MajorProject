@@ -68,10 +68,9 @@ const sessionOptions = {
   }
 };
 
-//root route
-// app.get("/", (req, res) => {
-//   res.send("Working..")
-// });
+app.get("/", (req, res) => {
+  res.redirect("/listing");
+});
 
 
 //for express session and connect flash package
