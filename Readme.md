@@ -20,6 +20,12 @@ A full-stack travel listing web application inspired by Airbnb, where users can 
 
 ---
 
+## 🌐 Live Demo
+
+https://majorproject-7lud.onrender.com
+
+---
+
 ## Tech Stack
 
 ### Frontend
